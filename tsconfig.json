@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+        "sourceMap": true,
+        "allowSyntheticDefaultImports": true,
+        "module": "ES6",
+        "jsx": "react",
+        "target": "ES5",
+        "allowJs": true,
+        "experimentalDecorators": true,
+        "esModuleInterop": true,
+        "watch": true,
+        "noEmitOnError": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "lib": [
+            "dom",
+            "es2015"
+        ],
+        "moduleResolution": "node",
+        "typeRoots": [
+            "node_modules/@types",
+            "@types"
+        ],
+        "baseUrl": ".",
+    }
+}
