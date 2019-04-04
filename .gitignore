@@ -1,0 +1,8 @@
+.idea
+*.iml
+node_modules/*
+.vscode/
+node_modules
+package-lock.json
+yarn-error.log
+proxy.config.js
