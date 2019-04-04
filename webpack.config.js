@@ -2,17 +2,19 @@ const HtmlWebpackPlugin = require("html-webpack-plugin")
 const path = require("path")
 const webpack = require("webpack")
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const host = "localhost"
+const port = 8081
 module.exports = {
     mode: "development",
     devtool: "#source-map",
     entry: {
-        app: "./index.js"
+        app: [`webpack-dev-server/client?http://${host}:${port}`, path.resolve(__dirname, "./index.js")]
     },
     output: {
         path: path.resolve(__dirname, "./dist"),
         filename: "[name].js",
         chunkFilename: "[name].js",
-        publicPath: "./"
+        publicPath: "/"
     },
     resolve:{extensions: [".js", ".jsx", ".ts", ".tsx"]},
     module: {
@@ -22,27 +24,30 @@ module.exports = {
         ],
     },
     plugins: [
+        // new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
 			template: 'index.html'
         }),
         // new webpack.DefinePlugin({
         //     'process.env.NODE_ENV': JSON.stringify('"development'),
         // }),
-        // new CleanWebpackPlugin(['dist']),
-        new webpack.HotModuleReplacementPlugin(),
+        // new webpack.HotModuleReplacementPlugin({}),
     ],
     devServer: {
         port: 8081,
         contentBase: path.resolve(__dirname, "./dist"),
-        // open: true,
+        open: true,
+        host,
+        port,
         historyApiFallback: {
             rewrites: [
                 {from: /app\.js$/, to: "/app.js"},
                 {from : "/*", to: "/index.html"}
             ]
-        }
+        },
+        // hot: true,
     },
     watchOptions: {
-		ignored: /node_modules/
+        ignored: /node_modules/
 	}
 }
