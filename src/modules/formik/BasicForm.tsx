@@ -1,14 +1,26 @@
 import React, { Fragment } from "react"
-import { Formik } from "formik"
+import { Formik, Field } from "formik"
+import Email from "./fields/Email" 
 
 export default class BasicFormik extends React.Component {
     render() {
         return <Fragment>
             <h1>Simple Form</h1>
             <Formik
-                initialValues={{ name: "3", phone: "" }}
+                initialValues={{ name: "3", phone: "", "email": "" }}
                 onSubmit={(values) => {
                     console.log(values)
+                }}
+                validate={(values) => {
+                    let errors = {}
+                    if (values.name.length < 10) {
+                        errors[`name`] = "name is too short"
+                    }
+                    if(!/^1\d{9}$/g.test(values.phone)) {
+                        errors[`phone`] = 'invalid phone number'
+                    }
+                    // console.log(errors)
+                    return errors
                 }}
             >
                 {
@@ -33,7 +45,21 @@ export default class BasicFormik extends React.Component {
                                 />
                                 {props.errors.phone && <div>{props.errors.phone}</div>}
                             </div>
-
+                            {/* <Field 
+                                name="email"
+                                validate={(v) => {
+                                console.info(v)
+                                return false
+                            }}>
+                                <label >email</label>
+                                <input type="text" name="email" />
+                            </Field> */}
+                            <Field 
+                                validate={(v) => {
+                                    console.info(v)
+                                    return 'ff'
+                                }}
+                                component={Email} name="email" />
                             <button type="submit">Submit</button>
                         </form>
                     }
