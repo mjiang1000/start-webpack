@@ -4,6 +4,7 @@ import {FieldProps} from "formik"
 export default class Email extends React.Component<FieldProps> {
     render() {
         const {field, form: {errors}, ...rest} = this.props
+        const {name} = field
         return <div>
             <label>email</label>
             <input type="text" {...field} {...rest} />
