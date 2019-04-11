@@ -5,7 +5,7 @@ import styled from "styled-components"
 // import Hello from "./modules/base/Hello"
 import BasicFromik from "./modules/formik/BasicForm"
 import BasicForm from "./modules/reduxForm/basicForm"
-import TodoApp from "./modules/redux/todoList/containers/app"
+import TodoApp from "./modules/redux/todoList/index"
 
 
 const NodeMount = document.getElementById("wrap")

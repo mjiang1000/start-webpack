@@ -2,7 +2,6 @@ import React from "react"
 import Todo from "./todo"
 
 export default class TodoList extends React.Component {
-
     render() {
         const { todos = [], onTodoClick } = this.props
         return <ul>{todos.map(todo => (
