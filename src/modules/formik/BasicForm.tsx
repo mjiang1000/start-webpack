@@ -56,8 +56,19 @@ export default class BasicFormik extends React.Component {
                             </Field> */}
                             <Field 
                                 validate={(v) => {
-                                    console.info(v)
-                                    return 'ff'
+                                    if (!/^\w+?@\w+?\.\w+?$/.test(v)) {
+                                        return "invalid email"
+                                    }
+                                    return new Promise((resolve, reject) => {
+                                        setTimeout(() => {
+                                            const a = Math.random()
+                                            if ( a > 0.5) {
+                                                reject("email has registered")
+                                            } else{
+                                                resolve(undefined)
+                                            }
+                                        })
+                                    })
                                 }}
                                 component={Email} name="email" />
                             <button type="submit">Submit</button>
