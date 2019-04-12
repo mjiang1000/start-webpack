@@ -19,8 +19,7 @@ export default function render() {
             <BasicFromik />
             <Divider />
             <BasicForm />
-            <Divider />
-            <TodoApp />
+
         </div>,
         NodeMount
     )

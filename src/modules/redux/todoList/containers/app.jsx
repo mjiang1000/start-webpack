@@ -15,7 +15,7 @@ class TodoApp extends React.Component {
 
 export default connect(
     (state) => {
-        return {todos: state}
+        return {todos: state.todos}
     }, (dispatch) => {
         return {
             addTodo: (text) => dispatch({type: ADD_TODO,data: {text}}),

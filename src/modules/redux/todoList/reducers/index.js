@@ -1,3 +1,5 @@
+import createReducer from "../../../../public/util/createReducer"
+
 export const ADD_TODO = `todo/addTodo`
 export const TRIGGER_TODO = `todo/triggerTodo`
 export const initialTodos = []
@@ -22,4 +24,15 @@ const reducer = (state, { type, data }) => {
     }
 }
 
-export default reducer
+export default createReducer(initialTodos, {
+    [ADD_TODO]: (state = [], action) => {
+        return [...state, {id: state.length, text: action.data.text, completed: false}]
+    },
+    [TRIGGER_TODO]: (state, {type, data}) => {
+        return [
+            ...state.slice(0, data.id),
+            {...state[data.id], completed: !state[data.id].completed},
+            ...state.slice(data.id + 1, state.length)
+        ]
+    }
+})
