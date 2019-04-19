@@ -2,12 +2,16 @@ import React, { Fragment } from "react"
 import { Formik, Field } from "formik"
 import Email from "./fields/Email" 
 
+interface V {
+    [name: string]: any;
+}
+const initValue: V = { name: "3", phone: "", "email": "", id: 0 }
 export default class BasicFormik extends React.Component {
     render() {
         return <Fragment>
-            <h1>Simple Form</h1>
+            <h1>Simple Formik</h1>
             <Formik
-                initialValues={{ name: "3", phone: "", "email": "" }}
+                initialValues={initValue}
                 onSubmit={(values) => {
                     console.log(values)
                 }}
@@ -72,6 +76,13 @@ export default class BasicFormik extends React.Component {
                                 }}
                                 component={Email} name="email" />
                             <button type="submit">Submit</button>
+                            <button onClick={() => {
+                                console.log(props.values)
+                                props.setValues({"id": 4})
+                                console.log(props.values)
+
+                                // this.props.form
+                            }}>setValues</button>
                         </form>
                     }
                 }
