@@ -3,7 +3,7 @@ import ReactDom from "react-dom"
 import styled from "styled-components"
 
 // import Hello from "./modules/base/Hello"
-import BasicFromik from "./modules/formik/BasicForm"
+import BasicFormik from "./modules/formik/BasicForm"
 import BasicForm from "./modules/reduxForm/basicForm"
 import TodoApp from "./modules/redux/todoList/index"
 
@@ -16,7 +16,7 @@ const Divider = styled.div`
 export default function render() {
     ReactDom.render(
         <div >
-            <BasicFromik />
+            <BasicFormik />
             <Divider />
             <BasicForm />
 
