@@ -1,6 +1,6 @@
 import React from "react"
 import { combineReducers, createStore } from "redux"
-import { connect, Provider } from "react-redux"
+import { connect, Provider } from "react-redux" // react-redux 使用react context使得子组件都能访问到store
 import { reducer as formReducer } from "redux-form"
 
 import Contact from "./ContactFrom"
