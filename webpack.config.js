@@ -8,7 +8,8 @@ module.exports = {
     mode: "development",
     devtool: "#source-map",
     entry: {
-        app: [`webpack-dev-server/client?http://${host}:${port}`, path.resolve(__dirname, "./index.js")]
+        app: [`webpack-dev-server/client?http://${host}:${port}`, path.resolve(__dirname, "./index.js")],
+        deferPage: [`webpack-dev-server/client?http://${host}:${port}`, path.resolve(__dirname, "./src/defer-and-async/js/index.js")]
     },
     output: {
         path: path.resolve(__dirname, "./dist"),
@@ -26,7 +27,13 @@ module.exports = {
     plugins: [
         // new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-			template: 'index.html'
+            template: path.resolve(__dirname, "./src/defer-and-async/index.html"),
+            chunks: ['deferPage'],
+            filename: 'defer-and-async/index.html'
+        }),
+        new HtmlWebpackPlugin({
+            template: 'index.html',
+            chunks: ['app']
         }),
         // new webpack.DefinePlugin({
         //     'process.env.NODE_ENV': JSON.stringify('"development'),
