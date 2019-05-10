@@ -16,10 +16,10 @@ const Divider = styled.div`
 export default function render() {
     ReactDom.render(
         <div >
-            <BasicFormik />
+            {/* <BasicFormik />
             <Divider />
-            <BasicForm />
-            {/* <Test />  */}
+            <BasicForm /> */}
+            <Test /> 
         </div>,
         NodeMount
     )
