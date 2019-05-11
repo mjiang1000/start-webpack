@@ -7,6 +7,7 @@ import BasicFormik from "./modules/formik/BasicForm"
 import BasicForm from "./modules/reduxForm/basicForm"
 import TodoApp from "./modules/redux/todoList/index"
 import Test from "./modules/testReactFiber/index"
+import HookComp from "./modules/hooksCompnents"
 
 const NodeMount = document.getElementById("wrap")
 const Divider = styled.div`
@@ -19,7 +20,8 @@ export default function render() {
             {/* <BasicFormik />
             <Divider />
             <BasicForm /> */}
-            <Test /> 
+            {/* <Test />  */}
+            <HookComp />
         </div>,
         NodeMount
     )
