@@ -2,6 +2,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin")
 const path = require("path")
 const webpack = require("webpack")
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const AutoDllPlugin = require("autodll-webpack-plugin")
 const host = "localhost"
 const port = 8081
 module.exports = {
@@ -39,7 +40,18 @@ module.exports = {
         //     'process.env.NODE_ENV': JSON.stringify('"development'),
         // }),
         // new webpack.HotModuleReplacementPlugin({}),
+        new AutoDllPlugin({
+            inject: true,
+            filename: '[name].js',
+            entry:{
+                vendor: [
+                    'react',
+                    'react-dom'
+                ]
+            }
+        }),
     ],
+
     devServer: {
         port: 8081,
         contentBase: path.resolve(__dirname, "./dist"),
